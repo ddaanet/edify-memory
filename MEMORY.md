@@ -1,0 +1,29 @@
+# Memory Index
+
+Last consolidated: 2026-04-03
+
+## Topic Files
+
+- **[project-overview.md](project-overview.md)** — Identity (edify-cli dist), structure, CLI groups, plugin bootstrap, rename history
+- **[architecture.md](architecture.md)** — Package module map, subpackage structure, plugin submodule, session CLI composition
+- **[workflow-system.md](workflow-system.md)** — Plan lifecycle, task model, worktree isolation, session modes, skill system, status display
+- **[development-practices.md](development-practices.md)** — Toolchain, testing conventions, code quality, commit patterns, recipes, gotchas
+- **[agent-failure-modes.md](agent-failure-modes.md)** — Cached agents, simulated output, test dismissal, directive bypass, competing paths, review convergence
+- **[operational-rules.md](operational-rules.md)** — Execution, code quality, session management, delegation, communication rules
+- **[decision-index.md](decision-index.md)** — Maps topics to 22 decision files in agents/decisions/
+- **[current-state.md](current-state.md)** — Rename nearly done, plugin bootstrap shipped, backlog picking
+- **[strategic-pivot.md](strategic-pivot.md)** — 2026-05 teardown: ecosystem (superpowers + autoMemory) replaces homegrown system; future = Lean-assisted requirements tracking. What survives/dies.
+
+## Quick Reference
+
+- **Distribution:** `edify-cli` (PyPI) / `edify` (import)
+- **Entry point:** `src/edify/cli.py` (Click)
+- **Pre-commit:** `just precommit`
+- **Tests:** `just test` (~160 test files, pytest strict)
+- **Python:** >=3.14, hatchling build, uv package manager
+- **Linting:** ruff ALL + mypy strict + docformatter
+- **Plugin infra:** `plugin/` submodule (fragments, skills, agents, hooks)
+- **Plans:** 67+ directories in `plans/`, tracked by planstate module
+- **Session:** `agents/session.md` — task queue, handoff state
+- **Decisions:** `agents/decisions/` — 22 decision files by domain
+- **Local dir:** `~/code/claudeutils` (rename to `~/code/edify` pending)
