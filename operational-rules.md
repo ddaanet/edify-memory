@@ -16,6 +16,10 @@ Key behavioral rules that govern agent execution in this project. These are the 
 - **Errors never pass silently** — no `|| true`, no `2>/dev/null` (except token-efficient bash expected exits)
 - **No sed escape** — when Edit tool fails twice, stop and report; don't bypass to sed
 
+## Model Selection
+
+- **Skill content editing is Opus work** — decoupling, rewriting, or restructuring skill SKILL.md files requires Opus; don't attempt on Sonnet
+
 ## Session Management
 
 - **Plan-backed tasks mandatory** — every pending task references `plans/<slug>/`
