@@ -14,6 +14,8 @@ Last consolidated: 2026-04-03
 - **[current-state.md](current-state.md)** — Rename nearly done, plugin bootstrap shipped, backlog picking
 - **[strategic-pivot.md](strategic-pivot.md)** — 2026-05 teardown: ecosystem (superpowers + autoMemory) replaces homegrown system; future = Lean-assisted requirements tracking. What survives/dies.
 - **[verify-loop-direction.md](verify-loop-direction.md)** — 2026-06-08: first concrete mission step = `edify check` (CrossHair) + `formalize` skill; spec+plan written; supersedes the requirements rebuild.
+- **[worktree-submodule-setup.md](worktree-submodule-setup.md)** — Making an EnterWorktree worktree usable: reset to local HEAD, fetch submodules from local stores, venv-on-PATH + sandbox-off quirks.
+- **[feedback-deliverable-over-exploration.md](feedback-deliverable-over-exploration.md)** — Reach a requested artifact (bug report, brief) with minimal exploration; report-don't-fix, drop briefs in `plans/`.
 
 ## Quick Reference
 
