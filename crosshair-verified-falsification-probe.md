@@ -25,6 +25,20 @@ is false **and that can only be refuted by exploring the suspect branch**. Run
   exploring that branch → the original result is `unknown`-in-disguise; report
   it honestly as such, never as verified.
 
+**Budget is a vacuity cause, not just timeout.** A `verified` is only as strong
+as the budget that produced it. With no `--timeout`, no `--per_condition_timeout`
+reaches CrossHair and it uses its own default — which can be too small to
+*synthesize the specific input* an interesting branch needs (e.g. two matching
+backticks). The branch never runs, the postcondition holds emptily, you get
+`verified`. Remedy: re-run a suspect `verified` at a raised `--timeout` (30 was
+enough to flip a vacuous pass to a real refutation in D10).
+
+**Strongest probe = a contract-violating CODE mutation, not just a false
+postcondition.** Injecting a realistic bug into the implementation and keeping
+the *real* contract tests the exact paths the contract guards; if CrossHair still
+says `verified`, the original pass was hollow. A false postcondition tests
+reachability; a code mutation tests the contract's actual discriminating power.
+
 **Why:** this is the load-bearing honesty discipline of the formalize loop
 (NFR4/NFR5). A `verified` claim is only worth as much as evidence the verifier
 actually exercised the logic. Evidence before assertion.
@@ -35,3 +49,10 @@ returned `verified`; the regex `exit_code==1` branch was suspect. Probe
 (false: exit 1 with unparseable stdout → empty findings) was refuted with
 `parse_crosshair_output(1, '\n', '', target='')` — proving the branch is
 explored and the original verdict real.
+
+**Worked example (2026-06-15, D10):** `markdown_inline_fixes.find_inline_code_spans`
+returned `verified` at default budget. A fault-injected `start_pos+1` off-by-one
+*also* passed `verified` at default budget — hollow. Only `--timeout 30` flipped
+it to refuted (`find_inline_code_spans('\x00`\x01`')` → `[(2,4)]`, `line[2]` not
+a backtick). The default-budget pass was vacuous because CrossHair never
+synthesized two matching backticks. See [[verify-loop-direction]] L7.
