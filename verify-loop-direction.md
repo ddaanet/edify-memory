@@ -45,8 +45,14 @@ is both pay-per-token *and* ToS-disallowed on a subscription; the official Agent
 SDK / `claude -p` is the blessed plan-credit path (separate Agent-SDK credit
 pool as of ~2026-06-15 — verify figures).
 
-Artifacts (committed/uncommitted as of handoff): spec
+Artifacts: spec
 `docs/superpowers/specs/2026-06-08-invariant-guided-verify-loop-design.md`
-(committed `ca002295`); plan
-`docs/superpowers/plans/2026-06-08-edify-check-verify-loop.md`. Plan: 9 TDD
-tasks; Task 1 gates on CrossHair supporting Python 3.14.
+(frozen); plan `docs/superpowers/plans/2026-06-08-edify-check-verify-loop.md`
+(frozen, **executed** 2026-06-09 — all 9 TDD tasks committed). The **living
+design** that tracks evolving state is
+`docs/superpowers/design/invariant-guided-verify-loop.md` (FR/NFR/decisions/
+limitations/history per [[living-design-doc-structure]]); it supersedes the
+frozen spec where they diverge. As of 2026-06-15 the plumbing is proven on the
+seed but the **thesis is unproven** (limitations L5/L6): the repair loop is not
+yet shown to beat the paper's ~35–39% one-shot rate, which needs the deferred
+eval harness.
