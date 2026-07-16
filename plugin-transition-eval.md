@@ -28,8 +28,10 @@ needs **no** rewrite (the eval's earlier claim was wrong — it assumed merge-to
 hook that builds a **stdlib** venv (no `uv`) at `${CLAUDE_PLUGIN_DATA}/venv-<version>/`
 and installs `edify-cli==<version>` from PyPI (versions locked equal by the consistency
 check); skills invoke it through content-substituted `${CLAUDE_PLUGIN_DATA}/current/bin/edify`.
-Forces publish-package-before-plugin ordering. **De-submodule execution still pending
-(irreversible).** Read the decision record before acting.
+Forces publish-package-before-plugin ordering. **De-submodule + fragment inlining
+EXECUTED 2026-07-16** (commits `c3c4477f` flatten, `11fb877e` inline); the runtime
+bootstrap (SessionStart venv hook, PyPI publish, marketplace `git-subdir` entry)
+remains unbuilt. Read the decision record before acting.
 
 **`just release` is currently BROKEN and the merge fixes it.** `git add
 plugin/.claude-plugin/plugin.json` fails with "Pathspec is in submodule" — a parent
@@ -73,7 +75,7 @@ exception at `plugin/fragments/error-handling.md:11` to name the *condition*
 skill. The prior eval's other reword target — memory `operational-rules.md:16` — was
 moot (that memory was deleted in the same 2026-07-16 triage).
 
-**Fragments: inline into CLAUDE.md, do NOT move to memory.** Refined 2026-07-16: the
+**Fragments: inlined into CLAUDE.md 2026-07-16 (done); do NOT move to memory.** Refined 2026-07-16: the
 earlier "fragments belong in native memory" instinct was the mistake the previous
 migration already made. Fragments are *always-on behavioral rules*; native memory is
 *recall-triggered* and may not fire. A rule that must hold every turn (no-praise,

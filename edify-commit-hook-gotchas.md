@@ -45,3 +45,14 @@ Also: `just precommit` from the agent shell needs `.venv/bin` on PATH
 (`PATH=/Users/david/code/edify/.venv/bin:$PATH just precommit`) and
 `dangerouslyDisableSandbox` for `uv`; without the venv, ruff/mypy/pytest are
 "command not found".
+
+**The sandbox mounts `.git/config` read-only**, so any git op that writes it
+fails — `git commit` (the gitlore hook commits+pushes the memory submodule),
+`git config`, and submodule operations (`git rm --cached <submodule>`,
+`git submodule …`). git reports this *misleadingly* as
+`Unable to create '.git/index.lock': File exists` (the lock appears during the
+op, then clears — no real concurrent git process), not as a permission error,
+so it looks like the transient-lock gotcha above but isn't. Run these with
+`dangerouslyDisableSandbox: true`. (`.git/index.lock` itself is writable; only
+`.git/config`, `.git/config.*`, and `.git/hooks` are denied.) Also, de-submodule
+`git rm --cached <path>` refuses until `.gitmodules` is staged first.
