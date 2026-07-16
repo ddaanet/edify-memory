@@ -12,6 +12,7 @@ tiers ahead of gitlore nested-memory support).
 - **[living-design-doc-structure.md](living-design-doc-structure.md)** — A "living design" doc = numbered FR/NFR + decisions + limitations + history; settled format, don't brainstorm scope.
 - **[crosshair-verified-falsification-probe.md](crosshair-verified-falsification-probe.md)** — Don't trust a CrossHair `verified`; probe with a known-false postcondition to rule out unknown-in-disguise.
 - **[edify-docformatter-d205.md](edify-docformatter-d205.md)** — docformatter wraps docstrings at 80 cols; keep summary lines ≤70 or ruff D205 fights it.
+- **[edify-commit-hook-gotchas.md](edify-commit-hook-gotchas.md)** — Committing here: gitmoji rejects unrecognized subjects, gitlore commits memory mid-pre-commit (stale gitlink → amend; bad subject → half-done), post-commit index.lock is transient. `just precommit` needs `.venv/bin` on PATH.
 - **[worktree-submodule-setup.md](worktree-submodule-setup.md)** — Making an EnterWorktree worktree usable: reset to local HEAD, fetch submodules from local stores, venv-on-PATH + sandbox-off quirks. (Dies with the plugin-submodule merge.)
 
 ## Global candidates

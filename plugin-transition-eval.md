@@ -16,8 +16,20 @@ dead — nothing else on the machine consumes `ddaanet/edify-plugin`, and edify 
 **no entry** in `claude-plugins/.claude-plugin/marketplace.json` (so `docs/marketplace.md`
 advertising `/plugin install edify@ddaanet` is stale). Even if published, `git-subdir`
 (already used for `ddaa`) handles a subdirectory. Coupling is ~5 justfile paths plus
-`plugin/bin/check-version-consistency.py` (climbs `parent.parent.parent`, hard-codes
-name `plugin` — needs a path rewrite).
+`plugin/bin/check-version-consistency.py`.
+
+**Design now FULLY SPECIFIED 2026-07-16 → `agents/decisions/plugin-packaging.md`.**
+The chosen shape is **de-submodule to a plain subdir** (repo root = `edify-cli`
+package; `plugin/` stays the plugin root), **not** merge-to-root — merge-to-root was
+rejected because a subdir-sourced plugin install copies only the plugin dir, so the
+inert `src/` tree must NOT become plugin content. Consequences: `check-version-consistency.py`
+needs **no** rewrite (the eval's earlier claim was wrong — it assumed merge-to-root;
+`plugin/` stays at the same depth). Plugin gets the CLI at runtime via a `SessionStart`
+hook that builds a **stdlib** venv (no `uv`) at `${CLAUDE_PLUGIN_DATA}/venv-<version>/`
+and installs `edify-cli==<version>` from PyPI (versions locked equal by the consistency
+check); skills invoke it through content-substituted `${CLAUDE_PLUGIN_DATA}/current/bin/edify`.
+Forces publish-package-before-plugin ordering. **De-submodule execution still pending
+(irreversible).** Read the decision record before acting.
 
 **`just release` is currently BROKEN and the merge fixes it.** `git add
 plugin/.claude-plugin/plugin.json` fails with "Pathspec is in submodule" — a parent
@@ -27,12 +39,12 @@ dotenv `a105bc92` — but the recipe can't complete a real release until the sub
 issue is resolved. Also fixed this session: `origin/HEAD` pointed at nonexistent
 `origin/tmp` (`git remote set-head origin --auto`).
 
-**Release-mechanism decision is BLOCKED on the user.** Directive was "use
-`claude-plugin-dev`", but that toolkit names edify an explicit non-goal
-(`CLAUDE.md:91-94`, `DESIGN.md:320-325`): no PyPI, no submodule, no dry-run, no
-rollback, single-manifest model. Options: extend it against its own decision, keep the
-bespoke recipe, or reconsider the exclusion now that a merged edify is a different
-shape. Not actionable without the call.
+**Release-mechanism decision RESOLVED 2026-07-16: PyPI-only for now, `claude-plugin-dev`
+eventually.** Keep the bespoke recipe / PyPI publish as the release mechanism in the
+near term; migrate to `claude-plugin-dev` later (which will require reconciling its
+stated edify exclusion — `CLAUDE.md:91-94`, `DESIGN.md:320-325`: no PyPI, no submodule,
+no dry-run/rollback, single-manifest — against edify's needs, but that reconciliation is
+deferred, not blocking). No longer waiting on a call.
 
 **Hooks: RETIRED 2026-07-16.** Deleted the whole `plugin/hooks/` dir (both hooks +
 `hooks.json`). `posttooluse-autoformat.sh` was redundant with `just format`;
