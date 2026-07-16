@@ -34,13 +34,19 @@ rollback, single-manifest model. Options: extend it against its own decision, ke
 bespoke recipe, or reconsider the exclusion now that a merged edify is a different
 shape. Not actionable without the call.
 
-**Hooks:** delete `posttooluse-autoformat.sh` (redundant with `just format`).
-`pretooluse-block-tmp.sh` is the SOLE mechanical tmp enforcement — `tmp-directory.md:7`'s
-claim that settings.json denies `Write(/tmp/*)` is **false** (deny list is only
-NotebookEdit + a datadog WebFetch). Couple that hook's fate to the tmp-policy decision;
-the prose also fights the harness scratchpad. Delete the dangling symlink
-`plugin/.claude/agents -> ../agents/` regardless — it registers the parent's docs as
-`edify:*` agents (visible live under `just claude`).
+**Hooks: RETIRED 2026-07-16.** Deleted the whole `plugin/hooks/` dir (both hooks +
+`hooks.json`). `posttooluse-autoformat.sh` was redundant with `just format`;
+`pretooluse-block-tmp.sh` denied writes to `/tmp/` and `/private/tmp/`, which now
+*actively conflicts* with the harness scratchpad (user: "made obsolete by harness
+scratchpad"). Confirmed the deny list is only NotebookEdit + a datadog WebFetch — so
+the hook was the sole tmp enforcement, and `tmp-directory.md`'s settings.json-deny
+claim was false. Also rewrote `tmp-directory.md` to point at the harness scratchpad +
+project `tmp/` (dropped the false claim and the `/tmp/claude/` prohibition), and
+rewrote `plugin/README.md`, which was ~90% fiction (claimed 18 skills/14 agents/23
+fragments/4 hooks; reality is 5 skills, 0 agents, 8 fragments, 0 hooks). Also deleted the
+dangling symlink `plugin/.claude/agents -> ../agents/` (target `plugin/agents/` doesn't
+exist — it surfaced nothing; the live `edify:*` agents come from the parent, not this
+link). The valid `plugin/.claude/skills -> ../skills/` symlink is kept.
 
 **`token-efficient-bash`: DELETED 2026-07-16.** Superseded three
 ways — the harness/models now write compound Bash spontaneously to cut turns (its
