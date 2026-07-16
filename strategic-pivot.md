@@ -21,7 +21,7 @@ Follow-ups RESOLVED 2026-05-23: venv repaired via `uv sync --reinstall` (stale `
 
 **Survives the teardown:**
 - 7 prose skills: `handoff`, `brief`, `proof`, `ground`, `prioritize`, `requirements`, `deliverable-review` — framework-agnostic, battle-tested. `requirements` becomes the *seed* of the new mission (rebuilt around formalization + tracking, not just decoupled). `deliverable-review`/`requirements` are currently coupled to `plans/<name>/` layout + planstate + corrector subagents — must be decoupled.
-- `token-efficient-bash` (kept for now).
+- ~~`token-efficient-bash`~~ (deleted 2026-07-16 — superseded by harness change + shell-gotchas + cwd-safety; see [[plugin-transition-eval]]).
 - 3 standalone CLI tools (no task-system coupling, persisting need): **markdown postprocessor**, **token counter**, **session-log scraper** (`extraction.py`). `edify-cli` survives as a slim package around these.
 - Salvage-for-thinking (proto-work for formal requirements, even as pipeline plumbing is cut): `system-property-tracing`, `invariant-tracking`, `decision-drift-audit`, `markdown-ast-parser`, `prototypes` (diagnoses what the old scraper got wrong).
 

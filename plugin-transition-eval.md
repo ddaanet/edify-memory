@@ -42,17 +42,18 @@ the prose also fights the harness scratchpad. Delete the dangling symlink
 `plugin/.claude/agents -> ../agents/` regardless — it registers the parent's docs as
 `edify:*` agents (visible live under `just claude`).
 
-**`token-efficient-bash`: delete (user-confirmed 2026-07-16).** Superseded three
+**`token-efficient-bash`: DELETED 2026-07-16.** Superseded three
 ways — the harness/models now write compound Bash spontaneously to cut turns (its
 `set -x` trace pattern is moot), the `shell-scripting:shell-gotchas` skill covers its
 strict-mode caveats better (source-verified superset: `grep || true`, pipefail+`head`
 SIGPIPE), and the `cwd-safety` plugin + shell-gotchas `environments.md` cover its
 directory-change reference. Also ships a verified bug (`if grep -q ... || true` makes
-the condition always true). Before deleting, reword the `|| true` exception at
-`error-handling.md:11` (fragment) to name the *condition* (non-zero exit encodes a
-result: grep no-match, diff differences) instead of the skill. The second reword
-target from the prior eval — memory `operational-rules.md:16` — is moot: that memory
-was deleted in the 2026-07-16 triage.
+the condition always true). Done: removed `plugin/skills/token-efficient-bash/`,
+dereferenced it from `CLAUDE.md` and `plugin/README.md`, and reworded the `|| true`
+exception at `plugin/fragments/error-handling.md:11` to name the *condition*
+(non-zero exit encodes a result: grep no-match, diff differences) instead of the
+skill. The prior eval's other reword target — memory `operational-rules.md:16` — was
+moot (that memory was deleted in the same 2026-07-16 triage).
 
 **Fragments: inline into CLAUDE.md, do NOT move to memory.** Refined 2026-07-16: the
 earlier "fragments belong in native memory" instinct was the mistake the previous
