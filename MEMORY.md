@@ -25,6 +25,8 @@ per-project is the only tier available.
 - **[feedback-deliverable-over-exploration.md](feedback-deliverable-over-exploration.md)** — Reach a requested artifact (bug report, brief) with minimal exploration; report-don't-fix, drop briefs in `plans/`.
 - **[feedback-squash-metadata-anywhere.md](feedback-squash-metadata-anywhere.md)** — Metadata (memory pointer, `.claude/settings.json`) can be squashed into whatever commit is convenient; don't ask, don't split out.
 - **[pytest-strict-ini-noop.md](pytest-strict-ini-noop.md)** — `[tool.pytest.ini_options]` `strict = true` is a silent no-op; should be `strict_markers` + `strict_config`. Reference config other repos copy — fix to stop propagation.
+- **[feedback-local-dogfood-no-registry-push.md](feedback-local-dogfood-no-registry-push.md)** — Local dogfooding must never require a PyPI/npm push; install from a local index (build wheel → `pip --find-links`), publish only at release.
+- **[feedback-no-hardcoded-path-fallback.md](feedback-no-hardcoded-path-fallback.md)** — Never hardcode paths, especially as a rarely-exercised fallback; the stale format rots silently and fails when the primary mechanism is already down.
 
 ## Quick Reference
 
