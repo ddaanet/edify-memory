@@ -37,3 +37,10 @@ site. A correct new raise with an uncovered `except` is worse than the
 original — unstructured crash instead of wrong-but-structured output. Verify
 the full propagation path: raise site → intermediate callers → top-level
 handler.
+
+**Stray closing-tag literal in Write content.** A `Write` can land a
+trailing `</content>` (or similar closing-tag) line in the file that was
+never in the intended content. It is silent — the tool reports success and
+the file-state echo does not flag it. Linted files catch it (shellcheck
+SC1073, ruff syntax error); unlinted scripts/config/data would ship broken.
+After writing a file no linter covers, verify its tail.
