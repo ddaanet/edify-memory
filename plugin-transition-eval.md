@@ -29,9 +29,11 @@ hook that builds a **stdlib** venv (no `uv`) at `${CLAUDE_PLUGIN_DATA}/venv-<ver
 and installs `edify-cli==<version>` from PyPI (versions locked equal by the consistency
 check); skills invoke it through content-substituted `${CLAUDE_PLUGIN_DATA}/current/bin/edify`.
 Forces publish-package-before-plugin ordering. **De-submodule + fragment inlining
-EXECUTED 2026-07-16** (commits `c3c4477f` flatten, `11fb877e` inline); the runtime
-bootstrap (SessionStart venv hook, PyPI publish, marketplace `git-subdir` entry)
-remains unbuilt. Read the decision record before acting.
+EXECUTED 2026-07-16** (commits `c3c4477f` flatten, `11fb877e` inline); the SessionStart hook
+was **built and verified 2026-07-17** (and switched from stdlib venv to **uv**,
+which drops the host-Python-3.14 floor); PyPI publish + marketplace entry are
+**postponed indefinitely** — see [[distribution-postponed]]. Read the decision
+record before acting.
 
 **`just release` is currently BROKEN and the merge fixes it.** `git add
 plugin/.claude-plugin/plugin.json` fails with "Pathspec is in submodule" — a parent
