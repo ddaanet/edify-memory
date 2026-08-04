@@ -5,6 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 4999475a-c8cc-4142-9a21-cb94ed911b38
+  modified: 2026-08-04T09:13:06.626Z
 ---
 
 Multi-agent evaluation run 2026-07-15. Full findings with file:line refs live at
@@ -31,9 +32,9 @@ check); skills invoke it through content-substituted `${CLAUDE_PLUGIN_DATA}/curr
 Forces publish-package-before-plugin ordering. **De-submodule + fragment inlining
 EXECUTED 2026-07-16** (commits `c3c4477f` flatten, `11fb877e` inline); the SessionStart hook
 was **built and verified 2026-07-17** (and switched from stdlib venv to **uv**,
-which drops the host-Python-3.14 floor); PyPI publish + marketplace entry are
-**postponed indefinitely** — see [[distribution-postponed]]. Read the decision
-record before acting.
+which drops the host-Python-3.14 floor); the PyPI publish **shipped 2026-08-04**
+(0.0.3), the marketplace entry is still missing — see
+[[distribution-published]]. Read the decision record before acting.
 
 **`just release` is currently BROKEN and the merge fixes it.** `git add
 plugin/.claude-plugin/plugin.json` fails with "Pathspec is in submodule" — a parent

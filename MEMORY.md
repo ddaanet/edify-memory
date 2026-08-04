@@ -8,7 +8,7 @@ tiers ahead of gitlore nested-memory support).
 
 - **[strategic-pivot.md](strategic-pivot.md)** — 2026-05 teardown: ecosystem (superpowers + autoMemory) replaces the homegrown system; future = Lean-assisted requirements tracking. What survives/dies.
 - **[verify-loop-direction.md](verify-loop-direction.md)** — 2026-06-08: first concrete mission step = `edify check` (CrossHair) + `formalize` skill; **executed 2026-06-09**, plumbing proven, thesis unproven; living design at `docs/superpowers/design/`.
-- **[distribution-postponed.md](distribution-postponed.md)** — 2026-07-17: PyPI publish + marketplace entry postponed indefinitely; bootstrap is built and verified, edify is uninstallable meanwhile. Don't propose releasing.
+- **[distribution-published.md](distribution-published.md)** — 2026-08-04: `edify-cli` 0.0.3 shipped to PyPI via `just release`; SessionStart bootstrap verified against PyPI. Marketplace entry still missing. PyPI first-upload token rules.
 - **[plugin-transition-eval.md](plugin-transition-eval.md)** — 2026-07-15/16 eval: merge plugin submodule (fixes broken `just release`), retire hooks, delete token-efficient-bash, inline fragments into CLAUDE.md not memory; release-mechanism decision blocked on user.
 - **[living-design-doc-structure.md](living-design-doc-structure.md)** — A "living design" doc = numbered FR/NFR + decisions + limitations + history; settled format, don't brainstorm scope.
 - **[crosshair-verified-falsification-probe.md](crosshair-verified-falsification-probe.md)** — Don't trust a CrossHair `verified`; probe with a known-false postcondition to rule out unknown-in-disguise.
