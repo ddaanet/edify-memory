@@ -1,44 +1,59 @@
 ---
 name: cc-subagent-context-capabilities
-description: "Measured 2026-08-10: CC subagents DO get the MEMORY.md index and DO have the Skill tool (plugin-local skills resolve); what they lack is the auto-recall body fetch"
-metadata: 
+description: "What a Claude Code subagent gets: the MEMORY.md index but no auto-fetched body, the Skill tool, and the Agent tool to spawn its own subagents — plus the parameters Agent does not have"
+metadata:
   node_type: memory
   type: reference
   originSessionId: 6fbb09f6-0327-477b-8a3c-cc5dae32f4bd
-  modified: 2026-08-10T05:59:05.527Z
+  modified: 2026-08-10T17:20:47.664Z
 ---
 
 Tier: global candidate (Claude Code platform behaviour, not edify-specific).
 
-Measured 2026-08-10 by three zero-tool-call introspection probes plus one
-invocation probe, against `general-purpose` subagents in an edify session.
+Observed on CC 2.1.226 across `general-purpose` and custom plugin agent types.
 
-|                     | main session | subagent |
-| ------------------- | ------------ | -------- |
-| `MEMORY.md` index   | injected     | **injected** |
-| memory file bodies  | auto-fetched | **never** |
-| `Skill` tool        | yes          | **yes**  |
+|                    | main session | subagent |
+| ------------------ | ------------ | -------- |
+| `MEMORY.md` index  | injected     | injected |
+| memory file bodies | auto-fetched | never    |
+| `Skill` tool       | yes          | yes      |
+| spawn a subagent   | yes          | yes      |
 
-- **The index reaches subagents**, under the identical label
-  `Contents of <path>/memory/MEMORY.md (user's auto-memory, persists across
-  conversations):`, i.e. it rides the CLAUDE.md assembly. Confirmed by verbatim
-  quotation of content a fresh agent could not fabricate, with zero tool calls.
-- **Auto-recall does not run for subagents.** A probe whose prompt named the
-  exact topics of two indexed memories got neither body. Subagents have routing
-  without fetch: they can decide what is relevant, but must Read it themselves.
-- **The `Skill` tool is available**, a 76-skill listing is provided, and both a
-  marketplace skill and a project-local plugin skill (loaded via
-  `--plugin-dir`, resolving through `plugin/.claude/skills/<name>`) invoked
-  successfully.
+**The index reaches subagents** under the same `Contents of <path>` label the
+main session gets, riding the CLAUDE.md assembly. **Auto-recall does not run
+below the main session**, so a subagent holds routing without fetch: it can
+judge what is relevant but must Read the body itself. Never instruct any agent
+to Read `memory/MEMORY.md` — re-read only after editing it or losing it to
+compaction. A gate anchor belongs on the recall *output*, never on reading the
+index.
 
-**Never instruct any agent to Read `memory/MEMORY.md`.** It is already in
-context at both levels. Re-read only if it was edited this session or a
-compaction dropped it. A gate anchor belongs on the recall *output* (an artifact
-write that fires on hit and null paths alike), never on reading the index.
+**Subagents spawn subagents.** The tool is `Agent`; no tool named `Task`
+exists at any level, and the `Task*` family is task-tracking, not spawning.
+Children receive the full `subagent_type` roster, including plugin-scoped
+types. Depth past two levels is unverified.
 
-**Why this is worth storing:** `agents/decisions/project-config.md` asserts the
-opposite on both counts ("Sub-agents lack Skill tool", and a "How To Recall
-Sub-Agent Memory" decision built on injecting the index by hand). Those were
-true of the pre-teardown homegrown system and were carried forward into the
-[[workflow-pipeline-revival]] rewiring unexamined. See
-[[feedback-stale-claims-survive-reference-sweeps]].
+**A child's result never reaches its parent.** The `Agent` tool result is a
+launch acknowledgement; the completion notification surfaces in the main
+session instead. A parent that needs the text must poll the child transcript.
+Design no agent to consume its child's return value.
+
+**`Agent` parameters:** `description`, `prompt`, `subagent_type`, `name`,
+`model`, `isolation` (`mode`/`team_name` where exposed). There is no
+`max_turns`, no `run_in_background`, no `resume`; the schema is
+`additionalProperties: false`, so passing one errors rather than being ignored.
+**Resumption is `SendMessage` to the agent's `name`** — which makes naming an
+agent at spawn time load-bearing, not cosmetic.
+
+**A declared `tools:` list is not what arrives.** `Agent` is present even when
+undeclared. A declared `AskUserQuestion` may be absent while an undeclared
+`Artifact` and `ToolSearch` are present. Treat the declaration as a request,
+not a contract, and verify before relying on any tool in an agent.
+
+**`Grep` and `Glob` are build-dependent.** Native macOS/Linux builds drop them
+from CC 2.1.117 onward, replacing them with search embedded in `Bash`; Windows
+and npm-installed builds keep them, and `--tools Grep,Glob` restores them on
+native builds (CC 2.1.162). Where they are absent, search runs through `Bash`
+(`rg`, `rg --files`) and an agent without `Bash` cannot search at all — so an
+agent definition that lists only `Read`/`Write`/`Edit` is search-blind there.
+
+See [[feedback-stale-claims-survive-reference-sweeps]].

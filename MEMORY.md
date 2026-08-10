@@ -9,7 +9,7 @@ tiers ahead of gitlore nested-memory support).
 - **[strategic-pivot.md](strategic-pivot.md)** — 2026-05 teardown: ecosystem (superpowers + autoMemory) replaces the homegrown system; future = Lean-assisted requirements tracking. What survives/dies. **Partially reversed 2026-08-04.**
 - **[workflow-pipeline-revival.md](workflow-pipeline-revival.md)** — 2026-08-04: pipeline revived from the `edify-plugin` GitHub repo (the only place the purged history survives) and rewired off dead recall/session subsystems. Untested end-to-end.
 - **[verify-loop-direction.md](verify-loop-direction.md)** — 2026-06-08: first concrete mission step = `edify check` (CrossHair) + `formalize` skill; **executed 2026-06-09**, plumbing proven, thesis unproven; living design at `docs/superpowers/design/`.
-- **[distribution-published.md](distribution-published.md)** — 2026-08-04: `edify-cli` 0.0.3 shipped to PyPI via `just release`; SessionStart bootstrap verified against PyPI. Marketplace entry still missing. PyPI first-upload token rules.
+- **[distribution-published.md](distribution-published.md)** — `edify-cli` 0.0.3 shipped to PyPI via `just release`; marketplace entry still missing; PyPI first-upload token rules. No user base — cross-version compatibility never justifies keeping anything.
 - **[plugin-transition-eval.md](plugin-transition-eval.md)** — 2026-07-15/16 eval: merge plugin submodule (fixes broken `just release`), retire hooks, delete token-efficient-bash, inline fragments into CLAUDE.md not memory; release-mechanism decision blocked on user.
 - **[living-design-doc-structure.md](living-design-doc-structure.md)** — A "living design" doc = numbered FR/NFR + decisions + limitations + history; settled format, don't brainstorm scope.
 - **[crosshair-verified-falsification-probe.md](crosshair-verified-falsification-probe.md)** — Don't trust a CrossHair `verified`; probe with a known-false postcondition to rule out unknown-in-disguise.
@@ -23,7 +23,7 @@ Cross-project learnings, marked `Tier: global candidate` in-file. Relocate to
 the global tier when gitlore nested memory lands; today they live here because
 per-project is the only tier available.
 
-- **[cc-subagent-context-capabilities.md](cc-subagent-context-capabilities.md)** — Measured: CC subagents DO get the MEMORY.md index and DO have the Skill tool; they only lack the auto-recall body fetch. Never instruct an agent to Read the index.
+- **[cc-subagent-context-capabilities.md](cc-subagent-context-capabilities.md)** — What a CC subagent gets: the index but no body fetch, the `Skill` tool, and `Agent` to spawn its own children; what `Agent` lacks; why a declared `tools:` list isn't a contract. Never instruct an agent to Read the index.
 - **[feedback-stale-claims-survive-reference-sweeps.md](feedback-stale-claims-survive-reference-sweeps.md)** — Rewiring a doc's references doesn't validate its claims; re-derive capability assertions after a platform change.
 - **[agent-failure-modes.md](agent-failure-modes.md)** — Model-general agent failures: cached agent defs, unverified "pre-existing" test failures, delta-scoped reviews, incomplete raise→catch fixes, stray Write closing-tags.
 - **[feedback-deliverable-over-exploration.md](feedback-deliverable-over-exploration.md)** — Reach a requested artifact (bug report, brief) with minimal exploration; report-don't-fix, drop briefs in `plans/`.
@@ -31,6 +31,7 @@ per-project is the only tier available.
 - **[pytest-strict-ini-noop.md](pytest-strict-ini-noop.md)** — `[tool.pytest.ini_options]` `strict = true` is a silent no-op; should be `strict_markers` + `strict_config`. Reference config other repos copy — fix to stop propagation.
 - **[feedback-local-dogfood-no-registry-push.md](feedback-local-dogfood-no-registry-push.md)** — Local dogfooding must never require a PyPI/npm push; install from a local index (build wheel → `pip --find-links`), publish only at release.
 - **[feedback-decision-docs-are-living.md](feedback-decision-docs-are-living.md)** — `agents/decisions/*.md` are living design docs: rewire their refs when components change, don't freeze them as ADRs or drop them.
+- **[feedback-grounding-reports-are-reusable.md](feedback-grounding-reports-are-reusable.md)** — Grounding/external-research reports outlive their feature and are expensive to redo; delete experiment output, keep surveys, and don't re-raise them.
 - **[feedback-no-hardcoded-path-fallback.md](feedback-no-hardcoded-path-fallback.md)** — Never hardcode paths, especially as a rarely-exercised fallback; the stale format rots silently and fails when the primary mechanism is already down.
 
 ## Quick Reference
