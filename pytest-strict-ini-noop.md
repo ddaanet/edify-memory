@@ -5,11 +5,11 @@ metadata:
   node_type: memory
   type: reference
   originSessionId: 4999475a-c8cc-4142-9a21-cb94ed911b38
+  modified: 2026-08-10T19:07:34.427Z
 ---
 
-**Tier: global candidate** — this is the reference config other repos copy
-verbatim (micro/tools/ghmem hit and fixed the same bug); belongs in the
-global tier when gitlore nested memory lands so the fix stops propagating.
+This is the reference config other repos copy verbatim — micro/tools/ghmem
+hit and fixed the same bug.
 
 `pyproject.toml` `[tool.pytest.ini_options]` sets `strict = true`. Pytest has
 **no** `strict` ini option, so the key is silently ignored — the config

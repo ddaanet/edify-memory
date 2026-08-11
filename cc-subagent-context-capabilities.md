@@ -5,10 +5,8 @@ metadata:
   node_type: memory
   type: reference
   originSessionId: 6fbb09f6-0327-477b-8a3c-cc5dae32f4bd
-  modified: 2026-08-10T17:20:47.664Z
+  modified: 2026-08-10T19:07:03.845Z
 ---
-
-Tier: global candidate (Claude Code platform behaviour, not edify-specific).
 
 Observed on CC 2.1.226 across `general-purpose` and custom plugin agent types.
 

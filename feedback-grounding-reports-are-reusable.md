@@ -5,10 +5,8 @@ metadata:
   node_type: memory
   type: feedback
   originSessionId: 558659ec-0449-4019-b178-2dbca12a6cee
-  modified: 2026-08-10T16:18:17.920Z
+  modified: 2026-08-10T19:07:51.956Z
 ---
-
-Tier: global candidate (research-artifact lifecycle, not edify-specific).
 
 When purging obsolete material, research artifacts split into two categories
 and only one is a deletion candidate.

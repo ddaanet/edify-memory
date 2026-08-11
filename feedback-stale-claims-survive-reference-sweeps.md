@@ -5,10 +5,8 @@ metadata:
   node_type: memory
   type: feedback
   originSessionId: 6fbb09f6-0327-477b-8a3c-cc5dae32f4bd
-  modified: 2026-08-10T05:59:13.994Z
+  modified: 2026-08-10T22:40:22.485Z
 ---
-
-Tier: global candidate.
 
 A reference sweep fixes paths and command names. It does not touch the
 *assertions* built on top of them, which fail silently and keep their authority.
@@ -30,4 +28,4 @@ in the codebase will contradict. A cheap empirical probe beats an inherited
 assertion: for agent-context questions, dispatch a subagent under a zero-tool
 constraint and have it quote verbatim content it could not fabricate.
 
-Related: [[agent-failure-modes]], [[feedback-decision-docs-are-living]].
+Related: [[feedback-decision-docs-are-living]].

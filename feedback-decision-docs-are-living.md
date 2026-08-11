@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: feedback
   originSessionId: 6fbb09f6-0327-477b-8a3c-cc5dae32f4bd
-  modified: 2026-08-04T13:25:14.186Z
+  modified: 2026-08-10T22:40:15.800Z
 ---
 
 `agents/decisions/*.md` in edify are **essential living design documents**, not
@@ -30,5 +30,3 @@ reference only where the decision is *about* the dead thing and naming it is the
 point (e.g. evidence that precommit broke for 9 days on a non-existent `edify
 validate` command). Where a script simply was not restored, say so inline rather
 than silently pointing at a missing path.
-
-Related: [[feedback-deliverable-over-exploration]].
