@@ -39,7 +39,7 @@ tiers ahead of gitlore nested-memory support).
 - [shell-gotchas before reviewing shell](ddaanet/shell-gotchas-on-review.md) — reviewing `.sh`/`.bats`/hook diffs, not only writing them: load `/shell-scripting:shell-gotchas` first, since shellcheck can't see the BSD/`set -e`/hook-env class
 - [design-doc writing](ddaanet/design-doc-writing.md) — where dated rationale goes vs present-tense truth; the six sections (FR, NFR, architecture, decisions, rejected alternatives, changelog); `(implemented <date>)` tags are changelog material
 - [skill vs command](ddaanet/skill-vs-command.md) — self-triggering skill when the condition is mechanical/detectable; command only for explicitly user-initiated actions
-- [examine evidence for drift direction](ddaanet/examine-evidence-drift.md) — two co-maintained artifacts diverge: establishing the drift direction rather than assuming a source of truth
+- [examine evidence for drift and lineage](ddaanet/examine-evidence-drift.md) — two co-maintained artifacts diverge, or "the mature sibling lacks X" is cited as evidence: establish drift direction and lineage from git history, never assumption
 - [loose generation + post-hoc fix](ddaanet/loose-generation.md) — where to constrain a generator: the scaffold or the artifact boundary
 - [CC project-dir encoding](ddaanet/cc-project-dir-encoding.md) — `~/.claude/projects/<name>/` = abs path with `[^A-Za-z0-9]`→`-`; to find a transcript search `<session-id>.jsonl`, don't apply the rule; edify's impl is incomplete
 - [outside-in TDD when architecture is fixed](ddaanet/outside-in-tdd.md) — starting TDD when the architecture is already fixed: e2e first or units first
@@ -133,4 +133,3 @@ tiers ahead of gitlore nested-memory support).
 - [Parse, don't regex, structured formats](ddaanet/parse-dont-regex-structured-formats.md) — use a real parser for YAML/JSON/TOML/HTML, never a hand-rolled regex even for "just one field"; regex is for prose token extraction
 - [subagent skips @-import expansion](ddaanet/subagent-skips-at-import-expansion.md) — an Agent-tool subagent's claudeMd block omits `@path` imports a real session resolves; verify with `claude -p`, not a subagent
 - [git subtree ensure_clean unscoped](ddaanet/git-subtree-ensure-clean-unscoped.md) — subtree add/pull/push refuse on ANY dirty path via an internal, unbypassable `git diff-index HEAD`; a pathspec fix at the call site can't work around it
-- [gitlore recover interrupted merge prep](ddaanet/gitlore-recover-interrupted-merge-prep.md) — an interrupted `push-memory.sh` can orphan a store's `MERGE_HEAD` with no gate able to see it; recover by reconstructing gitlore's own merge-state JSON and re-entering `resolve.sh continue-after-merge`, not a hand-rolled commit

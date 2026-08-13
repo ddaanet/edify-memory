@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: reference
   originSessionId: 6fbb09f6-0327-477b-8a3c-cc5dae32f4bd
-  modified: 2026-08-10T19:07:03.845Z
+  modified: 2026-08-12T20:25:19.684Z
 ---
 
 Observed on CC 2.1.226 across `general-purpose` and custom plugin agent types.
@@ -21,9 +21,13 @@ Observed on CC 2.1.226 across `general-purpose` and custom plugin agent types.
 main session gets, riding the CLAUDE.md assembly. **Auto-recall does not run
 below the main session**, so a subagent holds routing without fetch: it can
 judge what is relevant but must Read the body itself. Never instruct any agent
-to Read `memory/MEMORY.md` — re-read only after editing it or losing it to
-compaction. A gate anchor belongs on the recall *output*, never on reading the
-index.
+to Read `memory/MEMORY.md` — not even after editing it (the edit's own diff
+already carries the new content) or after a compaction: a live test (two
+compaction boundaries, one planted marker) showed compaction neither drops nor
+refreshes the injected index — it stays a frozen snapshot from session start,
+so there is nothing a conditional re-read could key off (D7,
+`docs/superpowers/specs/2026-08-11-edify-recall-skill-design.md`). A gate
+anchor belongs on the recall *output*, never on reading the index.
 
 **Subagents spawn subagents.** The tool is `Agent`; no tool named `Task`
 exists at any level, and the `Task*` family is task-tracking, not spawning.
