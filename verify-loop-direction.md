@@ -5,6 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 5c285ce3-3504-4e61-a6f3-1b4cf3c2b4ba
+  modified: 2026-08-14T12:57:43.656Z
 ---
 
 Decided 2026-06-08. Edify's mission ("invariant-guided agentic code
@@ -51,7 +52,7 @@ Artifacts: spec
 (frozen, **executed** 2026-06-09 — all 9 TDD tasks committed). The **living
 design** that tracks evolving state is
 `docs/superpowers/design/invariant-guided-verify-loop.md` (FR/NFR/decisions/
-limitations/history per [[living-design-doc-structure]]); it supersedes the
+limitations/changelog per [[ddaanet/design-doc-writing]]); it supersedes the
 frozen spec where they diverge. As of 2026-06-15 the plumbing is proven on the
 seed but the **thesis is unproven** (limitations L5/L6): the repair loop is not
 yet shown to beat the paper's ~35–39% one-shot rate, which needs the deferred

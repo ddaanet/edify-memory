@@ -1,32 +1,34 @@
 ---
 name: feedback-decision-docs-are-living
-description: agents/decisions/*.md are living design documents — rewire their references when components change; never treat them as immutable ADRs
+description: edify's design record is one living doc (docs/design.md) — rewire its claims when components change; never freeze it as an ADR archive
 metadata: 
   node_type: memory
   type: feedback
   originSessionId: 6fbb09f6-0327-477b-8a3c-cc5dae32f4bd
-  modified: 2026-08-10T22:40:15.800Z
+  modified: 2026-08-14T16:08:59.320Z
 ---
 
-`agents/decisions/*.md` in edify are **essential living design documents**, not
-archival ADRs. When the components they reference change, **rewire the
-references**. Do not leave them verbatim, and do not drop the documents.
+edify's architectural record is a **single living design document**,
+`docs/design.md`, not an archive of dated ADRs. When the components it
+references change, **rewire the document**. Do not leave stale references
+standing, and do not drop the decision.
 
-**Why:** I restored these docs during [[workflow-pipeline-revival]], noticed the
-mechanical rewiring pass had rewritten references inside them, and reverted it —
-reasoning that an ADR records what was decided *when*, so rewriting it to match
-current tooling falsifies the record. I reported that as a deliberate judgment
-call. The user corrected it: these documents carry institutional memory, and
-leaving them pointing at components that no longer exist degrades them. The
-"historical record" framing was mine, not the project's.
+**Why:** the earlier framing — that a decision record captures what was decided
+*when*, so rewriting it to match current tooling falsifies the record — is
+wrong for this project. These documents carry institutional memory, and leaving
+them pointing at components that no longer exist degrades them. The audit trail
+lives in git history; the document is current truth.
 
-**How to apply:** When a component is removed or replaced, sweep
-`agents/decisions/` alongside the code. Substitute the live successor where one
-exists (`/plan-adhoc` → `/runbook`, `memory-index.md` → `memory/MEMORY.md`).
-Where the mechanism died but the *principle* survives, generalize the prose
-rather than deleting the decision — "`edify _recall resolve` is the canonical
-gate anchor" becomes "the recall pass is the canonical gate anchor". Keep a
-reference only where the decision is *about* the dead thing and naming it is the
-point (e.g. evidence that precommit broke for 9 days on a non-existent `edify
-validate` command). Where a script simply was not restored, say so inline rather
-than silently pointing at a missing path.
+**How to apply:** when a component is removed or replaced, sweep the design doc
+alongside the code. Substitute the live successor where one exists. Where the
+mechanism died but the *principle* survives, generalize the prose rather than
+deleting the decision — "`edify _recall resolve` is the canonical gate anchor"
+becomes "the recall pass is the canonical gate anchor". Keep a reference to a
+dead component only where the decision is *about* that component and naming it
+is the point (e.g. evidence that precommit broke for 9 days on a non-existent
+`edify validate` command). Where a script simply was not restored, say so
+inline rather than silently pointing at a missing path.
+
+`agents/decisions/` held this record as 23 separate files until 2026-08-14; the
+content lives in `docs/design.md`, and content describing torn-down subsystems
+was dropped rather than carried across. Related: [[ddaanet/design-doc-writing]].
