@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 4999475a-c8cc-4142-9a21-cb94ed911b38
-  modified: 2026-08-04T09:13:06.626Z
+  modified: 2026-08-14T16:18:36.014Z
 ---
 
 Multi-agent evaluation run 2026-07-15. Full findings with file:line refs live at
@@ -19,7 +19,7 @@ advertising `/plugin install edify@ddaanet` is stale). Even if published, `git-s
 (already used for `ddaa`) handles a subdirectory. Coupling is ~5 justfile paths plus
 `plugin/bin/check-version-consistency.py`.
 
-**Design now FULLY SPECIFIED 2026-07-16 → `agents/decisions/plugin-packaging.md`.**
+**Design now FULLY SPECIFIED 2026-07-16 → `docs/design.md` §5.1 "One tree, two products".**
 The chosen shape is **de-submodule to a plain subdir** (repo root = `edify-cli`
 package; `plugin/` stays the plugin root), **not** merge-to-root — merge-to-root was
 rejected because a subdir-sourced plugin install copies only the plugin dir, so the
