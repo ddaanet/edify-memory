@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: feedback
   originSessionId: 6fbb09f6-0327-477b-8a3c-cc5dae32f4bd
-  modified: 2026-08-14T16:08:59.320Z
+  modified: 2026-08-14T18:06:21.787Z
 ---
 
 edify's architectural record is a **single living design document**,
@@ -32,3 +32,9 @@ inline rather than silently pointing at a missing path.
 `agents/decisions/` held this record as 23 separate files until 2026-08-14; the
 content lives in `docs/design.md`, and content describing torn-down subsystems
 was dropped rather than carried across. Related: [[ddaanet/design-doc-writing]].
+
+**Scope boundary.** `docs/design.md` is the project-level record for
+edify-shaped work. `docs/superpowers/` is not a fossil of the torn-down
+superpowers subsystem — it holds superpowers-shaped docs, including a live
+subproject design with its own FR/NFR lifecycle. Do not propose renaming or
+folding it on the assumption that the name is dead.
