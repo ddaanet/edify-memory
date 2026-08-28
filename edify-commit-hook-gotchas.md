@@ -5,6 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 4999475a-c8cc-4142-9a21-cb94ed911b38
+  modified: 2026-08-28T08:39:29.994Z
 ---
 
 Three commit-time hook behaviors in the edify parent repo, learned the hard
