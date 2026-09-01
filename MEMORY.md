@@ -7,7 +7,7 @@ tiers ahead of gitlore nested-memory support).
 ## Project-local
 
 - **[strategic-pivot.md](strategic-pivot.md)** — 2026-05 teardown: ecosystem (superpowers + autoMemory) replaces the homegrown system; future = Lean-assisted requirements tracking. What survives/dies. **Partially reversed 2026-08-04.**
-- **[workflow-pipeline-revival.md](workflow-pipeline-revival.md)** — 2026-08-04: pipeline revived from the `edify-plugin` GitHub repo (the only place the purged history survives) and rewired off dead recall/session subsystems. Untested end-to-end.
+- **[workflow-pipeline-revival.md](workflow-pipeline-revival.md)** — stale pipeline names met in an old plan, report or memory: `/plan-tdd`, `/plan-adhoc`, `/worktree`, `/codify`, `/shelve`, `memory-index.md`, `agent-core` → live names; pre-teardown text = archived `edify-plugin` repo, commit before its 145-file purge
 - **[verify-loop-direction.md](verify-loop-direction.md)** — 2026-06-08: first concrete mission step = `edify check` (CrossHair) + `formalize` skill; **executed 2026-06-09**, plumbing proven, thesis unproven; living design at `docs/superpowers/design/`.
 - **[distribution-published.md](distribution-published.md)** — No user base (PyPI + marketplace are published, not consumed) — compatibility never justifies keeping anything; PyPI first-upload token rule for a new project.
 - **[plugin-transition-eval.md](plugin-transition-eval.md)** — 2026-07-15/16 eval: merge plugin submodule (fixes broken `just release`), retire hooks, delete token-efficient-bash, inline fragments into CLAUDE.md not memory; release-mechanism decision blocked on user.
