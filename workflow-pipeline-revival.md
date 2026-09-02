@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 6fbb09f6-0327-477b-8a3c-cc5dae32f4bd
-  modified: 2026-09-01T20:43:35.219Z
+  modified: 2026-09-02T08:44:54.805Z
 ---
 
 **Pre-teardown pipeline text.** The archived `ddaanet/edify-plugin` GitHub
@@ -27,5 +27,6 @@ The 2026-08 rewiring (`edify _recall`, `/commit`, `/handoff`, `session.md`)
 is stated in `CLAUDE.md` §Skills and `docs/changelog.md` 2026-08-04; the
 2026-09 retirements (`runbook-outline.md`, `prepare-runbook.py`,
 `validate-runbook.py`, `/review-plan`, `runbook-outline-corrector`, Tier
-1/2/3) in `docs/changelog.md` 2026-09-01 and `docs/design.md` §7. Pipeline
-validation status is `docs/design.md` L-6.
+1/2/3) in the `docs/changelog.md` entry of 2026-09-01, which is the only
+place that names them all. Pipeline validation status is `docs/design.md`
+L-6.
