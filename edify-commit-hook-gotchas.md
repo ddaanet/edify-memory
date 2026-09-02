@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 4999475a-c8cc-4142-9a21-cb94ed911b38
-  modified: 2026-08-28T08:39:29.994Z
+  modified: 2026-09-02T08:33:00.790Z
 ---
 
 Three commit-time hook behaviors in the edify parent repo, learned the hard
@@ -18,6 +18,15 @@ which it rewrites to emoji). `♻️` and `🔥` pass; **`🗑️` was rejected*
 or malformed conventional commit prefix"). Pick a recognized emoji or a
 conventional prefix. The `plugin` submodule has *no* gitmoji hook — any subject
 commits there.
+
+**The rewrite means no stored subject ever carries the prefix.** `feat: x`
+is stored as `✨ x`, `refactor: x` as `♻️ x`. Anything that later greps
+`git log` for `feat:`/`refactor:` (an audit agent, a script, a runbook
+convention) matches nothing in this repo — key on a marker the hook preserves
+(text after the prefix, e.g. `Item N.M/k`), or on the emoji, never on the
+conventional word. The session-start notice that prefixes are rewritten does
+not prevent this: an audit agent was written with `feat:` checks in that
+session's context and matched nothing.
 
 **gitmoji runs AFTER gitlore's pre-commit, so a bad subject leaves a half-done
 state.** gitlore's pre-commit hook commits (and pushes) the `memory` submodule
