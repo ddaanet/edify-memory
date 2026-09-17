@@ -1,6 +1,6 @@
 ---
 name: feedback-stale-claims-survive-reference-sweeps
-description: "Rewiring a document's references does not validate its claims — after a platform change, re-derive the factual assertions, don't just repoint the paths"
+description: "Rewiring a doc's references doesn't validate its claims; re-derive capability assertions after a platform change."
 metadata: 
   node_type: memory
   type: feedback
