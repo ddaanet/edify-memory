@@ -1,6 +1,6 @@
 ---
 name: workflow-pipeline-revival
-description: "stale pipeline names met in an old plan, report or memory: /plan-tdd, /plan-adhoc, /worktree, /codify, /shelve, memory-index.md, agent-core → live names; pre-teardown text = archived edify-plugin repo, commit before its 145-file purge"
+description: "stale pipeline names met in an old plan, report or memory: `/plan-tdd`, `/plan-adhoc`, `/worktree`, `/codify`, `/shelve`, `/inline`, `/orchestrate`, `memory-index.md`, `continuation-passing.md`, `agent-core` → live names; pre-teardown text = archived `edify-plugin` repo, commit before its 145-file purge"
 metadata:
   node_type: memory
   type: project
@@ -22,6 +22,14 @@ since the 2026-08 revival is in this repo's own history.
 - `/codify` → `/claude-md-management:revise-claude-md`
 - `/shelve` → `/handoff:handoff`
 - `memory-index.md` → `memory/MEMORY.md`
+- `/inline`, `/orchestrate` → `/build`
+- phase type `inline` → removed; delegation is decided per item at dispatch
+  time, and types are `tdd` and `general`
+- `inline-plan.md` → removed as a kind; the artifact is `outline.md`
+- `skills/inline/`, `skills/orchestrate/` → `skills/build/`
+- `continuation-passing.md`, `[CONTINUATION: ...]`, `cooperative: true`,
+  a skill's `## Continuation` section → removed; a skill names its next
+  command and stops
 
 The 2026-08 rewiring (`edify _recall`, `/commit`, `/handoff`, `session.md`)
 is stated in `CLAUDE.md` §Skills and `docs/changelog.md` 2026-08-04; the
@@ -29,4 +37,6 @@ is stated in `CLAUDE.md` §Skills and `docs/changelog.md` 2026-08-04; the
 `validate-runbook.py`, `/review-plan`, `runbook-outline-corrector`, Tier
 1/2/3) in the `docs/changelog.md` entry of 2026-09-01, which is the only
 place that names them all. Pipeline validation status is `docs/design.md`
-L-6.
+L-6. The 2026-09-17 merge (`/inline` + `/orchestrate` → `/build`, phase type
+`inline`, `inline-plan.md`, continuation passing) is in the
+`docs/changelog.md` entry of that date.
