@@ -1,6 +1,6 @@
 ---
 name: line-caps
-description: "the 400-line caps in this repo: `scripts/check_line_limits.sh` is a hard gate on `src`/`tests`, the plan/PR cap is soft; a file parked at exactly 400 has stopped signalling, and a ~400-line contract predicts a ~1400-line implementation"
+description: "the 400-line caps here: `check_line_limits.sh` is a hard gate on `src`/`tests`/prose, allowlist ceilings are never raised (definitive), sweet stop 200-300 lines, the plan/PR cap is soft; when a source file goes over, split on a seam — never shave docstrings, and a file parked at exactly 400 has stopped signalling; hard-wrap prose at ~72 cols before measuring a plan (no 150–300-char lines, no hard wrap in GitHub bodies), accept a bounded overage over a costly split, and read a task contract nearing 400 lines as ~3.5× implementation overshoot"
 metadata:
   node_type: memory
   type: feedback
@@ -8,9 +8,18 @@ metadata:
 
 Two different 400-line caps apply here, and they behave differently.
 
-**`scripts/check_line_limits.sh` is a hard gate** over `src` and `tests`, wired
-into the `precommit`/`release` recipes ([[python-standards]]). Going over it
-breaks the build.
+**`scripts/check_line_limits.sh` is a hard gate** over `src`, `tests` and the
+prose trees, wired into the `precommit`/`release` recipes
+([[python-standards]]). Going over it breaks the build. **400 is a hard cap;
+the sweet stop is around 200-300 lines** — a file in that range has room to
+grow before the gate speaks, one near 400 is already due for a split.
+
+**Allowlist ceilings in `scripts/check_line_limits.allow` are never raised** —
+my human partner's definitive ruling, made knowing the cost: a hub split met it
+with one extra Read per `/design` and `/requirements` run, and a corrector
+edit met it by tightening neighbouring bullets. An edit to a listed file that
+needs room finds it in that file or runs the split job the entry names; a
+higher ceiling is not an option to propose.
 
 **The 400-line cap on human-reviewed artifacts** — plans, PRs, specs — is a
 **soft** guideline for reviewability. Don't block a commit or agonize over

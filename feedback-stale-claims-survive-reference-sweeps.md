@@ -28,4 +28,4 @@ in the codebase will contradict. A cheap empirical probe beats an inherited
 assertion: for agent-context questions, dispatch a subagent under a zero-tool
 constraint and have it quote verbatim content it could not fabricate.
 
-Related: [[feedback-decision-docs-are-living]].
+Related: `craft:design-doc-writing` for the living-design rules.
